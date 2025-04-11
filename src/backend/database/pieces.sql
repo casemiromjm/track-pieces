@@ -37,6 +37,6 @@ CREATE TABLE PieceInEvent (
     event_ID INTEGER,
     PRIMARY KEY (piece_ID, event_ID),
 
-    FOREIGN KEY (piece_ID) REFERENCES Piece(piece_ID),
-    FOREIGN KEY (event_ID) REFERENCES Event(event_ID)
+    FOREIGN KEY (piece_ID) REFERENCES Piece(piece_ID) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (event_ID) REFERENCES Event(event_ID) ON UPDATE CASCADE ON DELETE CASCADE
 );
