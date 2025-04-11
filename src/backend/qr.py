@@ -1,6 +1,9 @@
 import gen_code
 import qrcode
 import os
+import db as dbc
+import img_db
+from PIL import Image
 
 def generateQrcode(code : int):
     qr = qrcode.QRCode(
@@ -15,21 +18,25 @@ def generateQrcode(code : int):
 
     return qr
 
-def outputQrImage(qr_code : qrcode.QRCode):
+def outputQrImage(qr_code : qrcode.QRCode) -> Image.Image:
     path = os.path.join(os.path.expanduser("~"), "Desktop")
 
     img = qr_code.make_image(fill_color="black", back_color="white")
-    #img.save(f"{path}/qrcode.png")         # useful for print the qrcode later on
+    #img.save(f"{path}/qrcode.png")         # useful for outputing the qrcode later
 
     return img
 
-
 def main():
-    code = gen_code.generateRandomCode()
-    qr = generateQrcode(code)
+    qrcode_data = gen_code.generateRandomCode()
+    qr = generateQrcode(qrcode_data)
     qr_img = outputQrImage(qr)
 
-    
+    db_con = dbc.createDBConnection()
+
+    dbc.storeQrcode(qrcode_data, qr_img, db_con)
+
+    db_con.close()
+
 
 
 
