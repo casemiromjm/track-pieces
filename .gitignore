@@ -40,7 +40,6 @@ logs/
 *.sqlite-journal
 *.db-wal
 *.db-shm
-*db
 
 ### Docker ###
 # Ignore Docker compose override files
@@ -70,9 +69,7 @@ Thumbs.db
 
 ### Project Specific ###
 # Ignore your SQLite database file (but allow schema)
-!data/pieces.db  # Keep this if it's your empty template
-*.db             # Ignore other DB files
+src/backend/database/pieces.db
 
 # Ignore Docker data volumes
 **/data/
-!data/pieces.db  # Whitelist your DB template if needed
