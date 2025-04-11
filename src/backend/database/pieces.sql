@@ -1,15 +1,17 @@
 PRAGMA foreign_keys = ON;
 
+-- uses ROWID as ID attribute
+
 DROP TABLE IF EXISTS Qrcode;
 CREATE TABLE Qrcode (
-    qrcode_ID INTEGER PRIMARY KEY NOT NULL,
-    qrcode BLOB UNIQUE NOT NULL,     -- qrcode image
+    qrcode_ID INTEGER PRIMARY KEY,
+    qrcode_img BLOB UNIQUE NOT NULL,     -- qrcode image
     qrcode_num NUMERIC UNIQUE NOT NULL      -- qrcode number, i.e. content
 );
 
 DROP TABLE IF EXISTS Piece;
 CREATE TABLE Piece (
-    piece_ID INTEGER PRIMARY KEY NOT NULL,
+    piece_ID INTEGER PRIMARY KEY,
     piece_photo BLOB UNIQUE NOT NULL,
     qrcode INTEGER UNIQUE NOT NULL,
     isBroke BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
