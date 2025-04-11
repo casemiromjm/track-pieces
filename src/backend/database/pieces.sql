@@ -13,6 +13,10 @@ DROP TABLE IF EXISTS Piece;
 CREATE TABLE Piece (
     piece_ID INTEGER PRIMARY KEY,
     piece_photo BLOB UNIQUE NOT NULL,
+    model TEXT NOT NULL,
+    brand TEXT NOT NULL,
+    value NUMERIC NOT NULL CHECK (value > 0),
+    quantity NUMERIC NOT NULL CHECK (quantity > 0) DEFAULT 1,
     qrcode INTEGER UNIQUE NOT NULL,
     isBroke BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
 
