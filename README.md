@@ -10,9 +10,10 @@ Simple system for tracking decor pieces using QR codes. The system allows users 
 - [ ] Add decor piece to database and link to qrcode
 - [ ] Read a qrcode and register the piece with that qrcode
 - [ ] Read a qrcode and retrieve decor piece information
+- [ ] Cart-like system for adding decor pieces to an event
 - [ ] Generate a report of decor pieces that went to an event
 - [ ] Generate a report of decor pieces that were returned from an event
-- [ ] See all pieces
 
 ## Might Add
 - [ ] Unit tests
+- [ ] Catalog view of pieces (See all pieces)
