@@ -5,7 +5,7 @@ Simple system for tracking decor pieces using QR codes. The system allows users 
 - [X] Create database
 - [X] Generate random code for qrcode
 - [X] Generate random qrcode
-- [ ] Output qrcode img to a choosen directory
+- [X] Output qrcode img to desktop
 - [ ] Store qrcode in database
 - [ ] Add decor piece to database and link to qrcode
 - [ ] Read a qrcode and register the piece with that qrcode
