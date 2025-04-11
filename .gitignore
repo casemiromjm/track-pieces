@@ -40,6 +40,7 @@ logs/
 *.sqlite-journal
 *.db-wal
 *.db-shm
+*db
 
 ### Docker ###
 # Ignore Docker compose override files
