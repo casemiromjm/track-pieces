@@ -12,7 +12,6 @@ CREATE TABLE Piece (
     piece_ID INTEGER PRIMARY KEY NOT NULL,
     piece_photo BLOB UNIQUE NOT NULL,
     qrcode INTEGER UNIQUE NOT NULL,
-    inEvent BOOL NOT NULL DEFAULT false,      -- if true, it cant be selected to another event
     isBroke BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
 
     FOREIGN KEY (qrcode) REFERENCES Qrcode(qrcode_ID) ON DELETE CASCADE ON UPDATE CASCADE
@@ -25,6 +24,7 @@ CREATE TABLE Event (
     date DATE
 );
 
+-- if a piece is here, it can not be selected to another event
 DROP TABLE IF EXISTS PieceInEvent;
 CREATE TABLE PieceInEvent (
     piece_ID INTEGER,
@@ -34,4 +34,3 @@ CREATE TABLE PieceInEvent (
     FOREIGN KEY (piece_ID) REFERENCES Piece(piece_ID),
     FOREIGN KEY (event_ID) REFERENCES Event(event_ID)
 );
-
