@@ -1,6 +1,4 @@
 import sqlite3
-import qrcode
-from io import BytesIO
 from PIL import Image
 import backend.img_funcs as img_funcs
 
