@@ -1,7 +1,7 @@
 import gen_code
 import qrcode
 import os
-import db_funcs as dbc
+import db
 from PIL import Image
 
 def generateQrcode(code : int):
@@ -30,16 +30,11 @@ def main():
     qr = generateQrcode(qrcode_data)
     qr_img = outputQrImage(qr)
 
-    db_con = dbc.createDBConnection()
+    db_con = db.createDBConnection()
 
-    dbc.storeQrcode(qrcode_data, qr_img, db_con)
+    db.storeQrcode(qrcode_data, qr_img, db_con)
 
-    db_con.close()
-
-
-
-
-
+    db.close_db_connection(db_con)
 
 if __name__ == "__main__":
     main()
