@@ -11,6 +11,8 @@
     <button>Gerar outro QR code</button>
     <button onclick="downloadQR()" class="download-btn">Download</button>
     <a href="{{ url_for('home') }}" class="back-btn">Voltar ao início</a>
+
+    <script src="{{ url_for('static', filename='js/download.js') }}"></script>
 </div>
 
 {% endblock %}
