@@ -7,8 +7,10 @@ I initially tried to manage to use php+python together. In that case, I was usin
 - [X] Create database
 - [X] Generate random code for qrcode
 - [X] Generate random qrcode
-- [X] Output qrcode img to desktop
+- [X] Output qrcode img to desktop (not needed anymore)
+- [X] Output qrcode img to page (downloadable)
 - [X] Store qrcode in database
+- [X] Create a page for creating qrcode
 - [ ] Add decor piece to database and link to qrcode
 - [ ] Read a qrcode and register the piece with that qrcode
 - [ ] Read a qrcode and retrieve decor piece information
