@@ -1,6 +1,6 @@
 import sqlite3
 from PIL import Image
-import backend.img_funcs as img_funcs
+import img_funcs
 
 def createDBConnection():
     con = sqlite3.connect("./database/pieces.db")

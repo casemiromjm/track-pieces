@@ -1,7 +1,7 @@
 import gen_code
 import qrcode
 import os
-import backend.db_funcs as dbc
+import db_funcs as dbc
 from PIL import Image
 
 def generateQrcode(code : int):
