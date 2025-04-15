@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="qr-container">
+    <h1>QR Code Gerado</h1>
+    <div class="qr-code">
+        <img src="data:image/png;base64,{{ qr_image }}" alt="QR code gerado por último">
+    </div>
+
+    <button>Gerar outro QR code</button>
+    <button onclick="downloadQR()" class="download-btn">Download</button>
+    <a href="{{ url_for('home') }}" class="back-btn">Voltar ao início</a>
+</div>
+
+{% endblock %}
