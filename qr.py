@@ -3,6 +3,7 @@ import qrcode
 import os
 import db
 from PIL import Image
+import cv2
 
 def generateQrcode(code : int):
     '''Generates a QR code and returns it'''
@@ -26,6 +27,14 @@ def outputQrImage(qr_code : qrcode.QRCode) -> Image.Image:
     #img.save(f"{path}/qrcode.png")         # useful for outputing the qrcode later
 
     return img
+
+def decodeQR(image):
+    ''' Decode a QR code'''
+    img = cv2.imread(image)
+    detector = cv2.QRCodeDetector()
+    data = detector.detectAndDecode(img)
+
+    return data
 
 def main(db_con=None):
     qrcode_data = gen_code.generateRandomCode()
