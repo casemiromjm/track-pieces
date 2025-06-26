@@ -1,6 +1,10 @@
-{% extends 'base.html' %}
+<?php
 
-{% block body %}
+require_once (__DIR__ . '/../templates/common.php');
+
+drawHead();
+
+?>
 
 <div class="qr-container">
     <h1>QR Code Gerado</h1>
@@ -14,5 +18,3 @@
 
     <script src="{{ url_for('static', filename='js/download.js') }}"></script>
 </div>
-
-{% endblock %}
