@@ -1,7 +1,21 @@
 <?php
 
-function drawFooter (){
-    echo '<footer>@casemiromjm 2025</footer>';
+/**
+ * Draws header
+ */
+function drawHeader() {
+
+}
+
+/**
+ * Draws footer
+ */
+function drawFooter () {
+?>
+
+    <footer>@casemiromjm 2025</footer>
+
+<?php
 }
 
 ?>

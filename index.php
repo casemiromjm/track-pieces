@@ -1,5 +1,6 @@
 <?php
 
-header('Location: templates/base.php');
+header('Location: /pages/menu.php');
+die();
 
 ?>
