@@ -29,4 +29,8 @@ function generateQrcode($code) {
     return $builder->build();
 }
 
+function storeQrcode($qr) {
+
+}
+
 ?>
