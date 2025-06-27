@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 define('QRCODE_CODE_SIZE', 6);
 

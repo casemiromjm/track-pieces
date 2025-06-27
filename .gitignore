@@ -1,10 +1,13 @@
+# database
 database/pieces.db
+database/qr/
 
 # IDE
 .idea/
 .vscode/
 
-# System #
+# System 
 .DS_Store
 
+# composer
 vendor/

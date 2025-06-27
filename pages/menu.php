@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 require_once(__DIR__ . '/../templates/common.php');
 
@@ -12,7 +13,7 @@ $actions = ['generate_qrcode' => 'Gerar Qrcode',
 
 foreach ($actions as $action => $name) {
 ?>
-    <form method=<?=$method?> action=<?= '/../actions/' . $action . '.php' ?>>
+    <form method=<?=$method?> action=<?= '/actions/' . $action . '.php' ?>>
         <button type="submit" name=<?=$action?>><?=$name?></button>
     </form>
 <?php
