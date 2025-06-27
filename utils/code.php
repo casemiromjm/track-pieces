@@ -24,4 +24,16 @@ function generateRandomCode() {
     return $code;
 }
 
+/**
+ * Checks if the code is duplicate or not
+ * @return True if it is duplicate
+ * @return False if it is not duplicate
+ */
+function isCodeDuplicate($code) : bool {
+
+    // need to check in the database if the qrcode is duplicate or not
+
+    return false;
+}
+
 ?>
