@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../utils/code.php');
 require_once(__DIR__ . '/../utils/qrcode_generator.php');
 require_once(__DIR__ . '/../utils/qrcode_result.php');
 require_once(__DIR__ . '/../utils/session.php');
-require_once(__DIR__ . '/../database/qrcode_db.php');
+require_once(__DIR__ . '/../database/qrcode_storage.php');
 require_once(__DIR__ . '/../database/db.php');
 
 $session = new Session();

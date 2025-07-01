@@ -7,7 +7,7 @@ require_once('db.php');
 
 class QrcodeStorage {
     // members
-    private $db;
+    private PDO $db;
 
     // methods
     public function __construct(PDO $db) {
@@ -25,15 +25,18 @@ class QrcodeStorage {
             $stmt = $this->db->prepare('INSERT INTO Qrcode (qrcode_num, qrcode_img) VALUES (:qr_data, :qr_img_path)');
         
             $qr_data = $qr_result->getData();
-            
-            // ATENCAO AQ, PRECISO MUDAR PARA CONSEGUIR GUARDAR EM SVG TB
+
+            $fileExtension = match ($qr_result->getFileExt()) {
+                'svg' => '.svg',
+                default => '.png',
+            };
 
             $stmt->execute([
                 ':qr_data' => $qr_data,
-                ':qr_img_path' => './qr/' . $qr_data . '.png',
+                ':qr_img_path' => '/database/qr/' . $qr_data . $fileExtension,
             ]);
 
-            $qr_result->saveToFile(__DIR__ . '/qr/' . $qr_data . '.png');
+            $qr_result->saveToFile(__DIR__ . '/database/qr/' . $qr_data . $fileExtension);
 
         } catch (Exception $e) {
             die('An error occured storing the qrcode: ' . $e->getMessage());

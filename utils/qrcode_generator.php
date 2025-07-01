@@ -50,10 +50,9 @@ class QrcodeGenerator {
             roundBlockSizeMode: $this->roundBlockMode,
         );
 
-        return new QrcodeResult($builder->build(), $data);
+        return new QrcodeResult($builder->build(), $data, $this->writerType);
     }
 
-    // PARA USAR, PRECISA MUDAR A MANEIRA COMO GUARDA O ARQUIVO
     public function useSvg() : self {
         $this->writerType = 'svg';
 
