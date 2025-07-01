@@ -25,9 +25,10 @@ function drawHead() {
     <title>Controle do Almoxarifado</title>
 </head>
 <body>
-<?php }
+<?php } ?>
 
 
+<?php
 /**
  * Draws footer
  */
