@@ -9,6 +9,7 @@ drawQrcodeReaderHead();
     <h1>Ler QR code</h1>
     
     <div id="reader" style="width: 50%"></div>
+    <p id="qrcode-data"></p>
 
     <script>
         const htmlQrcode = new Html5Qrcode("reader");

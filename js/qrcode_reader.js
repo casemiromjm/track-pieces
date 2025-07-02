@@ -1,5 +1,11 @@
 async function handleQrcodeScan(qrcodeMessage) {
-    const qrcode_data = qrcodeMessage.match(/\bd{6}\b/) ? qrcodeMessage.match(/\bd{6}\b/)[0] : null;
+    const match = qrcodeMessage.match(/\b\d{6}\b/);
+    const qrcode_data = match ? match[0] : null;
 
-    //TODO
+    if (!qrcode_data || typeof qrcodeMessage !== "string") {
+        alert("Error: qrcode not valid!")
+        throw new Error("qrcode not valid")
+    }
+
+    document.getElementById('qrcode-data').textContent = qrcode_data;
 }

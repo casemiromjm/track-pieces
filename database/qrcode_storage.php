@@ -33,10 +33,10 @@ class QrcodeStorage {
 
             $stmt->execute([
                 ':qr_data' => $qr_data,
-                ':qr_img_path' => '/database/qr/' . $qr_data . $fileExtension,
+                ':qr_img_path' => './database/qr/' . $qr_data . $fileExtension,
             ]);
 
-            $qr_result->saveToFile(__DIR__ . '/database/qr/' . $qr_data . $fileExtension);
+            $qr_result->saveToFile(__DIR__ . '/qr/' . $qr_data . $fileExtension);
 
         } catch (Exception $e) {
             die('An error occured storing the qrcode: ' . $e->getMessage());
