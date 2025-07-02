@@ -1,28 +1,36 @@
 <?php
 
 require_once(__DIR__.'/../templates/common.php');
-require_once(__DIR__.'/../templates/qrcode_reader.php');
 
-drawQrcodeReaderHead();
+drawHead();
+
 ?>
-<div>
-    <h1>Ler QR code</h1>
-    
-    <div id="reader" style="width: 50%"></div>
-    <p id="qrcode-data"></p>
+    <div>
+        <form>
+            <label>Foto da peça</label>
+            <input required>
 
-    <script>
-        const htmlQrcode = new Html5Qrcode("reader");
-        htmlQrcode.start(
-            {facingMode: "environment"},
-            {},
-            handleQrcodeScan
-        ).catch(err => console.error("Error starting scanner:", err));
-    </script>
+            <label for="piece-name">Nome da peça</label>
+            <input type="text" id="piece-name" name="piece-name" required>
 
-    <a href="menu.php" class="back-btn">Voltar ao início</a>
-</div>
+            <label>Tipo da peça</label>
+            <input required>
 
+            <label>Marca da peça</label>
+            <input required>
+
+            <label for="piece-value">Valor da peça</label>
+            <input type="number" id="piece-value" name="piece-value" value="R$ " min="0" required>
+
+            <label for="qnt-piece">Quantidade</label>
+            <input type="number" id="qnt-piece" name="qnt-piece" min="0" required>
+
+            <label>Código Qrcode</label>
+            <input type="number" value="123456" disabled>
+
+            <button>Adicionar peça</button>
+        </form>
+    </div>
 <?php
 
 drawFoot();

@@ -15,3 +15,22 @@ function drawQrcodeReaderHead() {
 <body>
 
 <?php } ?>
+
+<?php
+
+function drawQrcodeReader() {
+?>
+    <div>
+        <h1>Ler QR code</h1>
+        
+        <div id="reader" style="width: 50%"></div>
+        <p id="qrcode-data"></p>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => startQrcodeScanner());
+        </script>
+
+        <a href="menu.php" class="back-btn">Voltar ao início</a>
+    </div>
+
+<?php } ?>
