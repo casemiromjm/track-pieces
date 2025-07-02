@@ -1,39 +1,36 @@
 <?php
 declare(strict_types=1);
 
-define('QRCODE_CODE_SIZE', 6);
+class RandomCodeGenerator {
+    // members
+    private int $QR_CODE_SIZE = 6;
 
-/**
- * Creates a random code with QRCODE_CODE_SIZE digits
- * @return code The random code generated
- */
-function generateRandomCode() {
+    // methods
 
-    $code = 0;
-
-    for ($i = 0; $i < QRCODE_CODE_SIZE; $i++) {
-        if ($i == 0) {
-            $n = random_int(1,9);
-        } else {
-            $n = random_int(0,9);
-        }
-
-        $code += $n*(10**(QRCODE_CODE_SIZE-($i+1)));
+    public function __construct() {
+        
     }
 
-    return $code;
-}
+    /**
+     * Creates a random code with QR_CODE_SIZE digits
+     * @return string code The random code generated
+    */
+    public function generate() : string {
 
-/**
- * Checks if the code is duplicate or not
- * @return True if it is duplicate
- * @return False if it is not duplicate
- */
-function isCodeDuplicate($code) : bool {
+        $code = 0;
 
-    // need to check in the database if the qrcode is duplicate or not
+        for ($i = 0; $i < $this->QR_CODE_SIZE; $i++) {
+            if ($i == 0) {
+                $n = random_int(1,9);
+            } else {
+                $n = random_int(0,9);
+            }
 
-    return false;
+            $code += $n*(10**($this->QR_CODE_SIZE-($i+1)));
+        }
+
+        return (string)$code;
+    }
 }
 
 ?>

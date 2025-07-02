@@ -4,33 +4,33 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Qrcode;
 CREATE TABLE Qrcode (
-    qrcode_ID INTEGER PRIMARY KEY,
-    qrcode_img BLOB UNIQUE NOT NULL,     -- qrcode image
-    qrcode_num NUMERIC UNIQUE NOT NULL      -- qrcode number, i.e. content
+    qrcode_num NUMERIC PRIMARY KEY,      -- qrcode data
+    qrcode_img TEXT UNIQUE NOT NULL     -- qrcode image path
 );
 
 DROP TABLE IF EXISTS Piece;
 CREATE TABLE Piece (
     piece_ID INTEGER PRIMARY KEY,
-    piece_photo BLOB UNIQUE NOT NULL,
-    model TEXT NOT NULL,
-    brand TEXT NOT NULL,
+    piece_photo TEXT UNIQUE NOT NULL,   -- piece photo path
+    type TEXT,
+    brand TEXT,
     value NUMERIC NOT NULL CHECK (value > 0),
     quantity NUMERIC NOT NULL CHECK (quantity > 0) DEFAULT 1,
-    qrcode INTEGER UNIQUE NOT NULL,
+    qrcode NUMERIC UNIQUE NOT NULL,
     isBroke BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
+    isInEvent BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
 
-    FOREIGN KEY (qrcode) REFERENCES Qrcode(qrcode_ID) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (qrcode) REFERENCES Qrcode(qrcode_num) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Event;
 CREATE TABLE Event (
     event_ID INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
-    date DATE
+    date DATE NOT NULL
 );
 
--- if a piece is here, it can not be selected to another event
+-- if a piece is in an event, it can not be selected to another event
 DROP TABLE IF EXISTS PieceInEvent;
 CREATE TABLE PieceInEvent (
     piece_ID INTEGER,
