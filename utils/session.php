@@ -16,11 +16,20 @@ class Session {
         $_SESSION = [];
     }
 
+    /**
+     * Sets a $key with $value in session array
+     * @param string $key Key that receives $value
+     * @param mixed $value Value that will be stored
+     */
     public function set($key, $value) {
         $_SESSION[$key] = $value;
     }
 
-    public function unset($key) {
+    /**
+     * Unsets a certain key in session array. It can unsets multiple keys.
+     * @param string|array $key Key to be unset
+     */
+    public function unset($key) : void {
         if (is_array($key)) {
             foreach ($key as $k) {
                 unset($_SESSION[$k]);

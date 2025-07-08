@@ -22,9 +22,10 @@ try {
     $storage = new QrcodeStorage($db = getDatabaseConnection());
     $storage->saveQrcode($qr_result);
 
-    $session->set('qr', $qr_result->getDataUri());
+    $session->set('qrcode-data', $qr_result->getData());
+    $session->set('qrcode-imgpath', $storage->getLastQrcode()['qrcode_img']);
 
-    header('Location: ../pages/generate_qrcode.php');
+    header('Location: ../pages/add_piece.php');
     exit;
 
 } catch (Exception $e) {

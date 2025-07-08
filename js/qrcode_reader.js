@@ -15,8 +15,4 @@ async function handleQrcodeScan(qrcodeMessage) {
         alert("Error: qrcode not valid!")
         throw new Error("qrcode not valid")
     }
-
-    // preciso ajeitar o envio do qrcode_data p o php
-
-    document.getElementById('qrcode-data').textContent = qrcode_data;
 }
