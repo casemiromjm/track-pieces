@@ -1,6 +1,7 @@
 # database
 database/pieces.db
 database/qr/
+database/piece_imgs/
 
 # IDE
 .idea/

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 require_once(__DIR__ . '/../utils/qrcode_generator.php');
 require_once(__DIR__ . '/../utils//qrcode_result.php');
@@ -17,7 +18,7 @@ class QrcodeStorage {
     public function saveQrcode(QrcodeResult $qr_result) {
         // queria fazer com q o codigo fosse gerado novamente
         if (!$this->isQrcodeUnique($qr_result)) {
-            header('Location: ../pages/menu.php?error=duplicate-code');
+            header('Location: ../pages/menu.php?msg=duplicate-code');
             exit;
         }
 
@@ -59,6 +60,15 @@ class QrcodeStorage {
         } catch (PDOException $e) {
             throw new RuntimeException('An error occured while checking qrcode uniqueness: ' . $e->getMessage());
         }
+    }
+
+    public function getLastQrcode() {
+        $stmt = $this->db->prepare('SELECT * FROM Qrcode ORDER BY rowid DESC LIMIT 1');
+        $stmt->execute();
+
+        $lastQrcode = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $lastQrcode ?? '';
     }
 }
 

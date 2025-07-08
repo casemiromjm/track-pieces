@@ -1,26 +1,25 @@
-function downloadQR() {
-    const qrImg = document.querySelector('.qr-code img');
-    if (!qrImg) {
-        console.error("QR Code image not found");
+function downloadQR(event) {
+    const button = event.currentTarget;
+    const img_path = button.getAttribute('qrcode-path');
+
+    if (!img_path) {
+        console.error("QR Code path not found");
         return;
     }
 
     // temp a tag
     const a = document.createElement('a');
-    a.href = qrImg.src;
+    a.href = img_path;
     a.download = 'qrcode.png';
 
     document.body.appendChild(a);
     a.click();
-
     document.body.removeChild(a);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Find all download buttons (both buttons and anchor tags within .download-btn)
-    const downloadButtons = document.querySelectorAll('.download-btn button, .download-btn a');
-    
-    // Add click event listeners to each button
+document.addEventListener('DOMContentLoaded', function () {
+    const downloadButtons = document.querySelectorAll('.download-btn');
+
     downloadButtons.forEach(button => {
         button.addEventListener('click', downloadQR);
     });
