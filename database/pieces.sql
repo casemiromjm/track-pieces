@@ -4,7 +4,7 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Qrcode;
 CREATE TABLE Qrcode (
-    qrcode_num NUMERIC PRIMARY KEY,      -- qrcode data
+    qrcode_num TEXT PRIMARY KEY,      -- qrcode data
     qrcode_img TEXT UNIQUE NOT NULL     -- qrcode image path
 );
 
@@ -16,7 +16,8 @@ CREATE TABLE Piece (
     brand TEXT,
     value NUMERIC NOT NULL CHECK (value > 0),
     quantity NUMERIC NOT NULL CHECK (quantity > 0) DEFAULT 1,
-    qrcode NUMERIC UNIQUE NOT NULL,
+    qrcode TEXT UNIQUE NOT NULL,
+    purchase_date DATE NOT NULL,
     isBroke BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
     isInEvent BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
 

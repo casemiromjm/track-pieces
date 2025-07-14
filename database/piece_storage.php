@@ -15,7 +15,7 @@ class PieceStorage {
     }
 
     public function savePiece(Piece $piece) {
-        $stmt = $this->db->prepare('INSERT INTO Piece (piece_photo, type, brand, value, quantity, qrcode) VALUES (:img_path, :piece_type, :piece_brand, :piece_value, :piece_qnt, :piece_qrcode)');
+        $stmt = $this->db->prepare('INSERT INTO Piece (piece_photo, type, brand, value, quantity, qrcode, purchase_date) VALUES (:img_path, :piece_type, :piece_brand, :piece_value, :piece_qnt, :piece_qrcode, :purchase_date)');
         $stmt->execute([
             ':img_path' => $piece->getImgPath(),
             ':piece_type' => $piece->getType(),
@@ -23,6 +23,7 @@ class PieceStorage {
             ':piece_value' => $piece->getValue(),
             ':piece_qnt' => $piece->getQuantity(),
             ':piece_qrcode' => $piece->getQrcodeData(),
+            ':purchase_date' => $piece->getPurchaseDate(),
         ]);
 
     }

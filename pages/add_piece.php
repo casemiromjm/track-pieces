@@ -11,6 +11,7 @@ $qrcode_imgpath = $session->get('qrcode-imgpath');
 
 $session->unset(['qrcode-data', 'qrcode-imgpath']);
 
+// tlvz mude para pegar a lista da db
 $piece_types = [
     'travessa',
     'copo',
@@ -36,7 +37,9 @@ drawHead();
                 <?php endforeach; ?>
             </select>
 
-            <!-- precisa ajeitar o input; colocar tudo em minuscula -->
+            <label for="piece-purchase-date">Data de compra da peça</label>
+            <input type="date" id="piece-purchase-date" name="piece-purchase-date" value="<?php echo date('Y-m-d'); ?>" required>
+
             <label for="piece-brand">Marca da peça</label>
             <input type="text" id="piece-brand" name="piece-brand" required>
 
