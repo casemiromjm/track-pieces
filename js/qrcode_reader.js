@@ -15,4 +15,10 @@ async function handleQrcodeScan(qrcodeMessage) {
         alert("Error: qrcode not valid!")
         throw new Error("qrcode not valid")
     }
+
+    const form = document.getElementById("qrcode-form");
+    const input_qrcode_data = document.getElementById("qrcode-data");
+
+    input_qrcode_data.value = qrcode_data;
+    form.submit();
 }

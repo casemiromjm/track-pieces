@@ -21,10 +21,12 @@ function drawQrcodeReaderHead() {
 function drawQrcodeReader() {
 ?>
     <div>
-        <h1>Ler QR code</h1>
+        <h1>Buscar peça</h1>
         
         <div id="reader" style="width: 50%"></div>
-        <p id="qrcode-data"></p>
+        <form id="qrcode-form" method="POST" action="/actions/search_piece.php">
+            <input id="qrcode-data" name="qrcode-data" type="text" hidden>
+        </form>
 
         <script>
             document.addEventListener("DOMContentLoaded", () => startQrcodeScanner());

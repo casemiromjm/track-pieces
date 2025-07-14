@@ -13,6 +13,9 @@ function handleMessage(string $msg) : void {
         case 'added-piece':
             echo '<script type="text/javascript">alert("A peça foi adicionada!")</script>';
             break;
+        case 'piece-not-found':
+            echo '<script type="text/javascript">alert("Peça não encontrada!")</script>';
+            break;
     }
 }
 
@@ -20,7 +23,7 @@ drawHead();
 
 $method = 'POST';
 $actions = ['generate_qrcode' => 'Adicionar peça',
-            'search_piece' => 'Buscar peça'
+            'read_qrcode_redirect' => 'Buscar peça'
         ];
 
 if (isset($_GET['msg'])) {
