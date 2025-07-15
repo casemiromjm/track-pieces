@@ -8,11 +8,16 @@ CREATE TABLE Qrcode (
     qrcode_img TEXT UNIQUE NOT NULL     -- qrcode image path
 );
 
+DROP TABLE IF EXISTS PieceType;
+CREATE TABLE PieceType (
+    type TEXT PRIMARY KEY
+);
+
 DROP TABLE IF EXISTS Piece;
 CREATE TABLE Piece (
     piece_ID INTEGER PRIMARY KEY,
     piece_photo TEXT UNIQUE NOT NULL,   -- piece photo path
-    type TEXT,
+    type TEXT NOT NULL,
     brand TEXT,
     value NUMERIC NOT NULL CHECK (value > 0),
     quantity NUMERIC NOT NULL CHECK (quantity > 0) DEFAULT 1,
@@ -21,7 +26,8 @@ CREATE TABLE Piece (
     isBroke BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
     isInEvent BOOL NOT NULL DEFAULT false,       -- if true, the piece get hidden in the db
 
-    FOREIGN KEY (qrcode) REFERENCES Qrcode(qrcode_num) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (qrcode) REFERENCES Qrcode(qrcode_num) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (type) REFERENCES PieceType(type) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Event;
@@ -41,3 +47,6 @@ CREATE TABLE PieceInEvent (
     FOREIGN KEY (piece_ID) REFERENCES Piece(piece_ID) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (event_ID) REFERENCES Event(event_ID) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+-- Inserting some PieceType
+INSERT INTO PieceType (type) VALUES ('taça'), ('copo'), ('travessa');

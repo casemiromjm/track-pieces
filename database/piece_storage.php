@@ -32,7 +32,7 @@ class PieceStorage {
         $stmt = $this->db->prepare('SELECT * FROM Piece ORDER BY rowid DESC LIMIT 1');
         $stmt->execute();
 
-        $lastPiece = $stmt->fetch(PDO::FETCH_ASSOC);
+        $lastPiece = $stmt->fetch();
 
         return $lastPiece ?? '';
     }

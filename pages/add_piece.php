@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+require_once(__DIR__.'/../database/db.php');
 require_once(__DIR__.'/../templates/common.php');
 require_once(__DIR__.'/../utils/session.php');
 
@@ -11,13 +12,7 @@ $qrcode_imgpath = $session->get('qrcode-imgpath');
 
 $session->unset(['qrcode-data', 'qrcode-imgpath']);
 
-// tlvz mude para pegar a lista da db
-$piece_types = [
-    'travessa',
-    'copo',
-    'taça',
-    //TO ADD
-];
+$piece_types = getPieceType();
 sort($piece_types);
 
 drawHead();

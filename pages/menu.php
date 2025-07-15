@@ -23,7 +23,8 @@ drawHead();
 
 $method = 'POST';
 $actions = ['generate_qrcode' => 'Adicionar peça',
-            'read_qrcode_redirect' => 'Buscar peça'
+            'read_qrcode_redirect' => 'Buscar peça',
+            'add_piecetype_redirect' => ' Adicionar outro tipo de peça',
         ];
 
 if (isset($_GET['msg'])) {

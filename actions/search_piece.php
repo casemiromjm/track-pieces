@@ -17,7 +17,7 @@ try {
 
     $stmt = $db->prepare('SELECT * FROM Piece WHERE qrcode=:piece_qrcode');
     $stmt->execute([':piece_qrcode' => $qrcode_data]);
-    $piece = $stmt->fetch(PDO::FETCH_ASSOC);
+    $piece = $stmt->fetch();
 
     if (!$piece) {
         header('Location: ../pages/menu.php?msg=piece-not-found');
