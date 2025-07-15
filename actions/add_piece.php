@@ -14,8 +14,9 @@ $brand = $_POST['piece-brand'] ?? '';
 $value = $_POST['piece-value'] ?? 0;
 $quantity = $_POST['qnt-piece'] ?? 0;
 $qrcode = $_POST['qrcode'] ?? null;
+$purchase_date = $_POST['piece-purchase-date'] ?? '';
 
-if (!$type || !$brand || !is_numeric($value) || !is_numeric($quantity)) {
+if (!$type || !$brand || !is_numeric($value) || !is_numeric($quantity) || !$purchase_date) {
     die('Missing or invalid data.');
 }
 
@@ -41,7 +42,7 @@ if (!move_uploaded_file($photo['tmp_name'], '.' . $target_path)) {
     die('Failed to move file');
 }
 
-$new_piece = new Piece ($target_path, strtolower($type), strtolower($brand), floatval($value), intval($quantity), $qrcode);
+$new_piece = new Piece ($target_path, strtolower($type), strtolower($brand), floatval($value), intval($quantity), $qrcode, $purchase_date);
 
 try {
     $storage = new PieceStorage( $db = getDatabaseConnection() );

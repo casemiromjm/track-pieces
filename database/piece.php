@@ -12,18 +12,20 @@ class Piece {
     private float $value;
     private int $qnt;
     private string $qrcode_data;
+    private string $purchase_date;
     private bool $isBroke = false;
     private bool $isInEvent = false;
 
     // methods
 
-    public function __construct(string $img_path, string $type, string $brand, float $value, int $qnt, string $qrcode_data) {
+    public function __construct(string $img_path, string $type, string $brand, float $value, int $qnt, string $qrcode_data, string $purchase_date) {
         $this->img_path = $img_path;
         $this->type = $type;
         $this->brand = $brand;
         $this->value = $value;
         $this->qnt = $qnt;
         $this->qrcode_data = $qrcode_data;
+        $this->purchase_date = $purchase_date;
     }
 
     public function isBroke() : bool {
@@ -66,7 +68,9 @@ class Piece {
         return $this->qrcode_data;
     }
 
-    
+    public function getPurchaseDate() : string {
+        return $this->purchase_date;
+    }
 }
 
 ?>
