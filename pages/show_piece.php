@@ -38,9 +38,10 @@ if ($piece):
             <li><strong>Está em um evento?:</strong> <?= $piece['isInEvent'] ? 'Sim' : 'Não' ?></li>
         </ul>
     </div>
-    <?php else: ?>
-        <p>Peça não registrada no sistema.</p>
-    <?php endif; ?>
+<?php else: ?>
+    <p>Peça não registrada no sistema.</p>
+<?php endif; ?>
+    <a href="menu.php">Voltar ao início</a>
     </main>
 <?php
 drawFoot();

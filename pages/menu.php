@@ -16,6 +16,8 @@ function handleMessage(string $msg) : void {
         case 'piece-not-found':
             echo '<script type="text/javascript">alert("Peça não encontrada!")</script>';
             break;
+        case 'added-new-piecetype':
+            echo '<script type="text/javascript">alert("Novo tipo de peça adicionado!")</script>';
     }
 }
 
