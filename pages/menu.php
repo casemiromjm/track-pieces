@@ -23,11 +23,11 @@ function handleMessage(string $msg) : void {
 
 drawHead();
 
-$method = 'POST';
-$actions = ['generate_qrcode' => 'Adicionar peça',
-            'read_qrcode_redirect' => 'Buscar peça',
-            'add_piecetype_redirect' => ' Adicionar outro tipo de peça',
-        ];
+$redirects = [
+    '/actions/generate_qrcode.php' => 'Adicionar peça',
+    '/pages/search_piece.php' => 'Buscar peça',
+    '/pages/add_piecetype.php' => ' Adicionar outro tipo de peça',
+];
 
 if (isset($_GET['msg'])) {
     handleMessage($_GET['msg']);
@@ -35,10 +35,10 @@ if (isset($_GET['msg'])) {
 
 // when adding a piece, it goes first to generate_qrcode, then it goes to the actual add_piece page
 
-foreach ($actions as $action => $name) {
+foreach ($redirects as $url => $name) {
 ?>
-    <form method=<?=$method?> action=<?= '/actions/' . $action . '.php' ?>>
-        <button type="submit" name=<?=$action?>><?=$name?></button>
+    <form action=<?=$url?> method='post'>
+        <button type="submit"><?=$name?></button>
     </form>
 <?php
 }
