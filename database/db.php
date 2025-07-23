@@ -10,7 +10,7 @@ function getDatabaseConnection() : PDO {
     return $db;
 }
 
-function getPieceType() : array {
+function getPieceTypes() : array {
     $db = getDatabaseConnection();
     $stmt = $db->prepare('SELECT * FROM PieceType');
     $stmt->execute();

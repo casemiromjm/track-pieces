@@ -12,7 +12,7 @@ $qrcode_imgpath = $session->get('qrcode-imgpath');
 
 $session->unset(['qrcode-data', 'qrcode-imgpath']);
 
-$piece_types = getPieceType();
+$piece_types = getPieceTypes();
 sort($piece_types);
 
 drawHead();
