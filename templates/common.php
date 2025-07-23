@@ -12,8 +12,6 @@ function drawHeader() {
  * Draws Head HTML
  */
 function drawHead() {
-    // $base_stylesheet = __DIR__ . '/../css/base.css';
-    // <link rel="stylesheet" href=<?=$base_stylesheet>
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +20,7 @@ function drawHead() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="stylesheet" href='/../css/base.css'>
     <title>Controle do Almoxarifado</title>
 </head>
 <body>
