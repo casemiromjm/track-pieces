@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once(__DIR__.'/../database/db.php');
+require_once(__DIR__.'/../database/piece.php');
 require_once(__DIR__.'/../templates/common.php');
 require_once(__DIR__.'/../utils/session.php');
 
@@ -12,7 +13,7 @@ $qrcode_imgpath = $session->get('qrcode-imgpath');
 
 $session->unset(['qrcode-data', 'qrcode-imgpath']);
 
-$piece_types = getPieceTypes();
+$piece_types = Piece::getPieceTypes();
 sort($piece_types);
 
 drawHead();

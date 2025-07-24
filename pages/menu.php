@@ -26,7 +26,8 @@ drawHead();
 $redirects = [
     '/actions/generate_qrcode.php' => 'Adicionar peça',
     '/pages/search_piece.php' => 'Buscar peça',
-    '/pages/add_piecetype.php' => ' Adicionar outro tipo de peça',
+    '/pages/add_piecetype.php' => 'Adicionar outro tipo de peça',
+    '/pages/catalog.php' => 'Catálogo de peças',
 ];
 
 if (isset($_GET['msg'])) {

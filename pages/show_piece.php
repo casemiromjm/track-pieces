@@ -3,11 +3,20 @@ declare(strict_types=1);
 
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../templates/common.php');
+require_once(__DIR__ . '/../database/piece.php');
 
 $session = new Session();
 
-$piece = $session->get('piece');
-$session->unset('piece');
+$piece = null;
+
+if ($session->exists('piece')) {
+    $piece = $session->get('piece');
+    $session->unset('piece');
+} else {
+    $piece_qrcode = $_GET['qrcode'];
+    $piece = Piece::getPieceByQrcode($piece_qrcode);
+    // $piece = new Piece($piece['piece_photo'], );
+}
 
 drawHead(); ?>
     <main>
