@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once(__DIR__ . '/piece_storage.php');
+require_once(__DIR__ . '/db.php');
 
 class Piece {
     // members
@@ -70,6 +71,27 @@ class Piece {
 
     public function getPurchaseDate() : string {
         return $this->purchase_date;
+    }
+
+    static function getPieceTypes() : array {
+        $db = getDatabaseConnection();
+        $stmt = $db->prepare('SELECT * FROM PieceType');
+        $stmt->execute();
+
+        $pieceTypes = $stmt->fetchAll();
+
+        return array_column($pieceTypes, 'type');
+    }
+
+    static function getPieceByQrcode(string $target_qrcode) : array {
+        $db = getDatabaseConnection();
+
+        $stmt = $db->prepare('SELECT * FROM Piece WHERE qrcode=:target_qrcode');
+        $stmt->execute([':target_qrcode' => $target_qrcode]);
+
+        $found_piece = $stmt->fetch();
+
+        return $found_piece;
     }
 }
 
